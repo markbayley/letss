@@ -15,12 +15,13 @@ function IndexPage(props) {
         bgColor="primary"
         size="large"
         bgImage="https://cdn.dribbble.com/users/1217289/screenshots/15069381/media/cacd8cf8bb6ad7c6576cd8e525c2f233.jpg"
-        bgImageOpacity={0.7}
-        title="Welcome to LETSS!"
+        bgImageOpacity={0.9}
+        title="Join LETSS!"
         subtitle="LEARNING ENGLISH MADE EASY."
         buttonText="Get Started"
         buttonColor="secondary"
         buttonPath="/pricing"
+    
       />
       <FeaturesSection
         bgColor="default"

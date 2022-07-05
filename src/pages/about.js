@@ -14,8 +14,8 @@ function AboutPage(props) {
         size="large"
         bgImage=""
         bgImageOpacity={1}
-        title="We help you make money"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam!"
+        title="About LETSS"
+        subtitle="LETSS was founded in 2021 by Dr. Ofi to help international medical students learn conversational English. Since then the company has experienced rapid growth, and enrollments have increasing each month."
       />
       <StatsSection
         bgColor="light"
@@ -39,7 +39,7 @@ function AboutPage(props) {
         title="Ready to get started?"
         subtitle=""
         buttonText="Get Started"
-        buttonColor="default"
+        buttonColor="secondary"
         buttonPath="/pricing"
       />
     </>

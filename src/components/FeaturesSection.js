@@ -10,6 +10,8 @@ import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import AspectRatio from "./AspectRatio";
 
+
+
 const useStyles = makeStyles((theme) => ({
   gridItem: {
     // Add border that contrasts lightly with background color.
@@ -33,22 +35,22 @@ function FeaturesSection(props) {
 
   const items = [
     {
-      title: "Lorem Ipsum",
+      title: "Real world learning",
       body: "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
       image: "https://www.clipartmax.com/png/full/241-2412014_education-teacher-school-learning-professional-icon.png",
     },
     {
-      title: "Lorem Ipsum",
+      title: "Learn at your own pace",
       body: "Nunc nulla mauris, laoreet vel cursus lacinia, consectetur sit amet tellus.",
       image: "https://cdn-icons-png.flaticon.com/512/201/201614.png",
     },
     {
-      title: "Lorem Ipsum",
+      title: "A unique learning format",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lobortis, metus et mattis ullamcorper",
       image: "https://cdn-icons-png.flaticon.com/512/201/201597.png",
     },
     {
-      title: "Lorem Ipsum",
+      title: "Share your personal stories",
       body: "Suspendisse ut tincidunt eros. In velit mi, rhoncus dictum neque a, tincidunt lobortis justo",
       image: "https://cdn-icons-png.flaticon.com/512/201/201608.png",
     },

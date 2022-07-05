@@ -22,6 +22,8 @@ import { Link } from "./../util/router";
 import { useAuth } from "./../util/auth";
 import { useDarkMode } from "./../util/theme";
 
+
+
 const useStyles = makeStyles((theme) => ({
   logo: {
     height: 28,
@@ -33,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
   spacer: {
     flexGrow: 1,
   },
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    padding: 0
+  }
 }));
 
 function Navbar(props) {
@@ -66,7 +73,55 @@ function Navbar(props) {
             <Link to="/">
               <img src={logo} alt="Logo" className={classes.logo} />
             </Link>
+
+        
+
             <div className={classes.spacer} />
+
+           
+                <List disablePadding={true} className={classes.root}>
+
+                <ListItem
+                    component={Link}
+                    to="/about"
+                    button={true}
+                    className={classes.listItem}
+                  >
+                    <ListItemText>About</ListItemText>
+                  </ListItem>
+
+            <ListItem
+                    component={Link}
+                    to="/pricing"
+                    button={true}
+                    className={classes.listItem}
+                  >
+                    <ListItemText>Pricing</ListItemText>
+                  </ListItem>
+                  {/* <ListItem
+                    component={Link}
+                    to="/faq"
+                    button={true}
+                    className={classes.listItem}
+                  >
+                    <ListItemText>FAQ</ListItemText>
+                  </ListItem> */}
+
+          
+
+                  <ListItem
+                    component={Link}
+                    to="/contact"
+                    button={true}
+                    className={classes.listItem}
+                  >
+                    <ListItemText>Contact</ListItemText>
+                  </ListItem>
+
+                  </List>
+           
+                  {/* <div className={classes.spacer} /> */}
+          
             <Hidden smUp={true} implementation="css">
               <IconButton
                 onClick={() => {
@@ -137,7 +192,7 @@ function Navbar(props) {
                 </>
               )}
 
-              <IconButton
+              {/* <IconButton
                 color="primary"
                 onClick={darkMode.toggle}
                 style={{ opacity: 0.6 }}
@@ -145,7 +200,7 @@ function Navbar(props) {
                 {darkMode.value && <NightsStayIcon />}
 
                 {!darkMode.value && <WbSunnyIcon />}
-              </IconButton>
+              </IconButton> */}
             </Hidden>
           </Toolbar>
         </Container>

@@ -40,18 +40,26 @@ const themeConfig = {
   // Dark theme
   dark: {
     palette: {
-      type: "dark",
+      type: "light",
       primary: {
-        // Same as in light but we could
-        // adjust color hue if needed
+        // Use hue from colors or hex
         main: colors.indigo["300"],
+        // Uncomment to specify light/dark
+        // shades instead of automatically
+        // calculating from above value.
+        //light: "#4791db",
+        //dark: "#115293",
       },
       secondary: {
         main: colors.pink["400"],
       },
       background: {
-        default: colors.grey["900"],
-        paper: colors.grey["800"],
+        // Background for <body>
+        // and <Section color="default">
+        default: "#fff",
+        // Background for elevated
+        // components (<Card>, etc)
+        paper: "#fff",
       },
     },
   },
@@ -60,7 +68,7 @@ const themeConfig = {
   common: {
     typography: {
       fontSize: 14,
-      fontFamily: '"Boogaloo", "Anton", "Fredoka One", "Prompt" , "Righteous", sans-serif',
+      fontFamily: '"Boogaloo","Arial", sans-serif',
       // Uncomment to make button lowercase
       // button: { textTransform: "none" },
     },

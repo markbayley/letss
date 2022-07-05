@@ -13,14 +13,17 @@ function HeroSection(props) {
       size={props.size}
       bgImage={props.bgImage}
       bgImageOpacity={props.bgImageOpacity}
+      
     >
       <Container>
-        <Box textAlign="center">
-          <SectionHeader
+        <Box textAlign="center" color="black" >
+       
+          <SectionHeader 
             title={props.title}
             subtitle={props.subtitle}
-            size={3}
+            size={2}
           />
+         
           <Button
             component={Link}
             to={props.buttonPath}

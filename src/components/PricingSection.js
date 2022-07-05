@@ -61,35 +61,31 @@ function PricingSection(props) {
     },
     {
       id: "pro",
-      name: "Pro",
+      name: "Alumni",
       price: "20",
       perks: [
         "Lorem ipsum dolor sit amet",
         "Consectetur adipiscing elit",
         "Integer molestie lorem at massa",
-        "Faucibus porta lacus fringilla vel",
-        "Aenean sit amet erat nunc",
+      
       ],
     },
     {
       id: "business",
-      name: "Business",
-      price: "50",
+      name: "Group",
+      price: "35",
       perks: [
         "Lorem ipsum dolor sit amet",
         "Consectetur adipiscing elit",
         "Integer molestie lorem at massa",
-        "Faucibus porta lacus fringilla vel",
-        "Aenean sit amet erat nunc",
-        "Lorem ipsum dolor sit amet",
-        "Consectetur adipiscing elit",
+      
       ],
     },
   ];
 
   return (
     <Section
-      bgColor={props.bgColor}
+      bgColor="primary"
       size={props.size}
       bgImage={props.bgImage}
       bgImageOpacity={props.bgImageOpacity}
@@ -106,11 +102,11 @@ function PricingSection(props) {
             <Grid item={true} xs={12} md={4} key={index}>
               <Card className={classes.card}>
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h6" component="h2">
+                  <Typography variant="h6" component="h2" color="secondary">
                     {item.name}
                   </Typography>
                   <Box className={classes.price} mt={1}>
-                    <Typography variant="h3">${item.price}</Typography>
+                    <Typography variant="h3" >${item.price}</Typography>
                     <Typography variant="h4" color="textSecondary">
                       /mo
                     </Typography>
@@ -152,11 +148,12 @@ function PricingSection(props) {
                           : `/auth/signup?next=/purchase/${item.id}`
                       }
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       size="large"
-                      fullWidth={true}
+                      // fullWidth={true}
+                     
                     >
-                      Choose
+                      Purchase
                     </Button>
                   </Box>
                 </CardContent>
