@@ -43,7 +43,7 @@ function TeamBiosSection(props) {
       bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ad amet inventore hic beatae, quas sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!",
     },
     {
-      avatar: "",
+      avatar: "https://uploads.divjoy.com/pravatar-150x-48.jpeg",
       name: "Diana Low",
       role: "Designer",
       bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur hic beatae, perferendis sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!",
