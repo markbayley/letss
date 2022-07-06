@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useForm } from "react-hook-form";
 import { useAuth } from "./../util/auth";
+
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import FormHelperText from '@mui/material/FormHelperText';
 
 function SettingsGeneral(props) {
   const auth = useAuth();
@@ -81,6 +89,49 @@ function SettingsGeneral(props) {
             })}
           />
         </Grid>
+        <Grid item={true} xs={12}>
+          <TextField
+            variant="outlined"
+            type="phone"
+            label="Phone"
+            name="phone"
+            placeholder="+61 1234 5678"
+            defaultValue={auth.user.phone}
+            error={errors.phone ? true : false}
+            helperText={errors.phone && errors.phone.message}
+            fullWidth={true}
+            inputRef={register({
+              required: "Please enter your phone number",
+            })}
+          />
+        </Grid>
+
+
+
+
+        <Grid item={true} xs={12} md={props.showNameField ? 6 : 12}>
+        <FormHelperText sx={{fontFamily: "Boogaloo", ml: "13px"}}>Preferred Class</FormHelperText>
+          <FormControl >
+            <RadioGroup
+              sx={{ml:"5px"}}
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormLabel sx={{fontFamily:"Boogaloo", mt:"7px", mx:"3px", color:"black"}}>Sunday 9pm</FormLabel><FormControlLabel value="Sunday 9pm" control={<Radio  name="class1" defaultValue={auth.user.class1} inputRef={register({
+
+              })} />} />
+              <FormLabel sx={{fontFamily:"Boogaloo", mt:"7px", mr:"3px", color:"black"}}>Monday 1pm</FormLabel><FormControlLabel value="Monday 1pm" control={<Radio name="class2" defaultValue={auth.user.class2} inputRef={register({
+
+              })} />} />
+               <FormLabel sx={{fontFamily:"Boogaloo", mt:"7px", mr:"3px", color:"black"}}>Saturday 8pm</FormLabel><FormControlLabel value="Saturday 8pm" control={<Radio name="class3" defaultValue={auth.user.class3} inputRef={register({
+
+              })} />} />
+
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+
         <Grid item={true} xs={12}>
           <Button
             variant="contained"

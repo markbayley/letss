@@ -120,7 +120,7 @@ function Navbar(props) {
 
                   </List>
            
-                  {/* <div className={classes.spacer} /> */}
+                 
           
             <Hidden smUp={true} implementation="css">
               <IconButton

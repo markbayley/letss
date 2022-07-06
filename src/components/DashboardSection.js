@@ -6,13 +6,14 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import LinkMui from "@material-ui/core/Link";
+// import LinkMui from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import DashboardItems from "./DashboardItems";
-import { Link, useRouter } from "./../util/router";
+import { useRouter } from "./../util/router";
 import { useAuth } from "./../util/auth";
+
 
 const useStyles = makeStyles((theme) => ({
   cardContent: {
@@ -59,14 +60,78 @@ function DashboardSection(props) {
         <Grid container={true} spacing={4}>
           <Grid item={true} xs={12} md={6}>
             <DashboardItems />
+
           </Grid>
+
           <Grid item={true} xs={12} md={6}>
             <Card>
               <CardContent className={classes.cardContent}>
                 <Box>
-                  <Typography variant="h6" paragraph={true}>
-                    <strong>What is this?</strong>
+                  <Typography variant="h5" paragraph={true}>
+                    <strong>  Hi <strong>{auth.user.name}</strong>!</strong>
                   </Typography>
+                  <Typography component="div" variant="h6" >
+
+
+                    <div>
+                      You are <strong>{auth.user.stripeCustomerId ? "subscribed" : "not subscribed"}</strong> to a plan.
+                    </div>
+                    <div>
+                      Your next class is <strong>{auth.user.class1 || auth.user.class2 || auth.user.class3}</strong>.
+                    </div>
+
+                    {auth.user.stripeCustomerId && (
+                      <>
+
+                        <div>
+                          Your plan status is{" "}
+                          <strong>
+                            {auth.user.stripeSubscriptionStatus || "unknown"}
+                          </strong>
+                          .
+                        </div>
+                        <div>
+                          You are signed in as <strong>{auth.user.email}</strong>.
+                        </div>
+                        <div>
+                          You are subscribed to a{" "}
+                          <strong>{auth.user.planId}  plan</strong>.
+                        </div>
+                      </>
+                    )}
+                  </Typography>
+                </Box>
+
+                {/* <Box mt={3}>
+                  <Typography>
+                    <div>
+                      You can change your account info{` `}
+                      {auth.user.stripeSubscriptionId && <>and plan{` `}</>}
+                      in{` `}
+                      <LinkMui component={Link} to="/settings/general">
+                        <strong>settings</strong>
+                      </LinkMui>
+                      .
+                    </div>
+
+                    {!auth.user.stripeSubscriptionId && (
+                      <div>
+                        You can signup for a plan in{" "}
+                        <LinkMui component={Link} to="/pricing">
+                          <strong>pricing</strong>
+                        </LinkMui>
+                        .
+                      </div>
+                    )}
+                  </Typography>
+                </Box> */}
+
+
+                <Box mt={3}>
+                  <Typography variant="h6" paragraph={true}>
+                    <strong>Extra debug info</strong>
+                  </Typography>
+
                   <Typography paragraph={true}>
                     The component on your left is an example UI that shows you
                     how to fetch, display, and update a list of items that
@@ -79,58 +144,10 @@ function DashboardSection(props) {
                     you'll be able to use the star button to highlight items,
                     otherwise you'll be asked to upgrade your plan.
                   </Typography>
-                  <Typography paragraph={true}>
-                    After exporting your code, you'll want to modify this
-                    component to your needs. You may also find it easier to just
-                    use this component as a reference as you build out your
-                    custom UI.
-                  </Typography>
-                  <Box mt={3}>
-                    <Typography variant="h6" paragraph={true}>
-                      <strong>Extra debug info</strong>
-                    </Typography>
-                    <Typography component="div">
-                      <div>
-                        You are signed in as <strong>{auth.user.email}</strong>.
-                      </div>
+          
 
-                      {auth.user.stripeSubscriptionId && (
-                        <>
-                          <div>
-                            You are subscribed to the{" "}
-                            <strong>{auth.user.planId} plan</strong>.
-                          </div>
-                          <div>
-                            Your plan status is{" "}
-                            <strong>
-                              {auth.user.stripeSubscriptionStatus}
-                            </strong>
-                            .
-                          </div>
-                        </>
-                      )}
 
-                      <div>
-                        You can change your account info{` `}
-                        {auth.user.stripeSubscriptionId && <>and plan{` `}</>}
-                        in{` `}
-                        <LinkMui component={Link} to="/settings/general">
-                          <strong>settings</strong>
-                        </LinkMui>
-                        .
-                      </div>
 
-                      {!auth.user.stripeSubscriptionId && (
-                        <div>
-                          You can signup for a plan in{" "}
-                          <LinkMui component={Link} to="/pricing">
-                            <strong>pricing</strong>
-                          </LinkMui>
-                          .
-                        </div>
-                      )}
-                    </Typography>
-                  </Box>
                 </Box>
               </CardContent>
             </Card>

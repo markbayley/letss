@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/lab/Alert";
-import Paper from "@material-ui/core/Paper";
+
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
 import StarIcon from "@material-ui/icons/Star";
@@ -18,6 +18,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import EditItemModal from "./EditItemModal";
 import { useAuth } from "./../util/auth";
 import { updateItem, deleteItem, useItemsByOwner } from "./../util/db";
+
+import CardHeader from "@material-ui/core/CardHeader";
+import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+
 
 const useStyles = makeStyles((theme) => ({
   paperItems: {
@@ -29,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
   starFeatured: {
     color: theme.palette.warning.main,
+  },
+  box: {
+    height: 50,
+    // border: "1px solid black",
+    padding: 8
   },
 }));
 
@@ -51,7 +63,7 @@ function DashboardItems(props) {
 
   const canUseStar =
     auth.user.planIsActive &&
-    (auth.user.planId === "pro" || auth.user.planId === "business");
+    (auth.user.planId === "pro" || auth.user.planId === "business" );
 
   const handleStarItem = (item) => {
     if (canUseStar) {
@@ -69,21 +81,21 @@ function DashboardItems(props) {
         </Box>
       )}
 
-      <Paper className={classes.paperItems}>
+    
         <Box
           display="flex"
           justifyContent="space-between"
           alignItems="center"
           padding={2}
         >
-          <Typography variant="h5">Items</Typography>
+          <Typography variant="h5">Feedback</Typography>
           <Button
             variant="contained"
             size="medium"
             color="primary"
             onClick={() => setCreatingItem(true)}
           >
-            Add Item
+            Compose
           </Button>
         </Box>
         <Divider />
@@ -98,44 +110,89 @@ function DashboardItems(props) {
           </Box>
         )}
 
+
+
+
         {itemsStatus !== "loading" && items && items.length > 0 && (
-          <List disablePadding={true}>
+          <List >
             {items.map((item, index) => (
+              
               <ListItem
                 key={index}
                 divider={index !== items.length - 1}
                 className={item.featured ? classes.featured : ""}
               >
-                <ListItemText>{item.name}</ListItemText>
-                <ListItemSecondaryAction>
-                  <IconButton
-                    edge="end"
+
+             
+
+                <Grid item={true} xs={12} sm={12} key={index} >
+                  <Card  >
+                    <CardContent>
+                      <Typography variant="body1" component="p" >
+                        "{item.feedback}"
+                      </Typography>
+                     
+                    </CardContent>
+                    <CardHeader
+                      className={classes.header}
+                      avatar={
+                        <Avatar
+                          src={item.avatar}
+                          alt={item.name}
+                          className={classes.avatar}
+                        />
+                      }
+                      title={item.name}
+                      subheader={item.company}
+                    />
+<Box    
+  display="flex"
+  justifyContent="flex-end"
+
+  className={classes.box}
+ >
+<ListItemSecondaryAction >
+                  <IconButton color="secondary"
+                    edge="start"
                     aria-label="star"
                     onClick={() => handleStarItem(item)}
                     className={item.featured ? classes.starFeatured : ""}
                   >
                     <StarIcon />
                   </IconButton>
-                  <IconButton
-                    edge="end"
+                  <IconButton color="secondary"
+                    edge="start"
                     aria-label="update"
                     onClick={() => setUpdatingItemId(item.id)}
                   >
                     <EditIcon />
                   </IconButton>
-                  <IconButton
-                    edge="end"
+                  <IconButton color="secondary"
+                    edge="start"
                     aria-label="delete"
                     onClick={() => deleteItem(item.id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
+                </Box>
+                  </Card>
+                 
+                
+                </Grid>
+               
+           
+           
+        
+
+                
               </ListItem>
+              
             ))}
           </List>
         )}
-      </Paper>
+    
+      
 
       {creatingItem && <EditItemModal onDone={() => setCreatingItem(false)} />}
 
