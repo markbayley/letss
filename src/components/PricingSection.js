@@ -61,7 +61,7 @@ function PricingSection(props) {
     },
     {
       id: "pro",
-      name: "Alumni",
+      name: "Pro",
       price: "20",
       perks: [
         "Lorem ipsum dolor sit amet",
@@ -72,7 +72,7 @@ function PricingSection(props) {
     },
     {
       id: "business",
-      name: "Group",
+      name: "Business",
       price: "35",
       perks: [
         "Lorem ipsum dolor sit amet",
